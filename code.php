@@ -32,11 +32,11 @@ if (! function_exists('pelaajaesittely_by_page_id')) {
         $excerpt = $page->post_excerpt;
         $imgSrc = getFirstImgSrc($page->post_content);
 
-        $ret = '<div class="playerDisplay" style="%s">';
+        $ret = '<a href="' . $page->post_name . '" class="playerDisplay" style="%s">';
         $ret = sprintf($ret, (empty($imgSrc)
                 ?  ''
-                : "background-image: url('" . $imgSrc . "')"));
-        $ret .= '<span>' . $excerpt . '</span></div>';
+                : "background-image: url('" . strip_tags($imgSrc) . "')"));
+        $ret .= '<span>' . strip_tags($excerpt, '<strong><b>') . '</span></a>';
 
         return $ret;
     }
@@ -52,6 +52,10 @@ if (! function_exists('pelaajaesittely_by_page_id')) {
   position: relative;
   float: left;
   margin: 5px;
+}
+.playerDisplay:hover {
+  transform: scale(1.05);
+  transition: all .5s;
 }
 
 .playerDisplay span {
