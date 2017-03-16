@@ -36,7 +36,7 @@ if (! function_exists('pelaajaesittely_by_page_id')) {
         $ret = sprintf($ret, (empty($imgSrc)
                 ?  ''
                 : "background-image: url('" . strip_tags($imgSrc) . "')"));
-        $ret .= '<span>' . strip_tags($excerpt, '<strong><b>') . '</span></a>';
+        $ret .= '<span>' . strip_tags($excerpt, '<strong><b><br>') . '</span></a>';
 
         return $ret;
     }
